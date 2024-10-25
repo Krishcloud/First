@@ -35,6 +35,7 @@ public class BikeServiceImpl implements BikeService{
 	
 	public void deleteById(Long id) {
 		bikeRepository.deleteById(id);
+		
 	}
 	
 	/*
