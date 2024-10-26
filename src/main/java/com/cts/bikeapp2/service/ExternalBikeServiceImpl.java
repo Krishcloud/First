@@ -43,12 +43,12 @@ public class ExternalBikeServiceImpl implements ExternalBikeService {
 		   headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 		   headers.add("x-api-key", apikey);
 
-		HttpEntity<Bike3API> entity = new HttpEntity<>(headers);
+		HttpEntity<String> entity = new HttpEntity<>(headers);
 		
 		ResponseEntity<Bike3API[]> s= restTemplate.exchange(url, HttpMethod.GET, entity, Bike3API[].class);
 		
 		return Arrays.asList(s.getBody());
-		
+		//return s.getBody();
 	}
 	
 	public List<Bike3API> getBikeDetails2(String make, String model) {
@@ -58,10 +58,11 @@ public class ExternalBikeServiceImpl implements ExternalBikeService {
 		   headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 		   headers.add("x-api-key", apikey);
 
-		HttpEntity<Bike3API> entity = new HttpEntity<>(headers);
+		HttpEntity<String> entity = new HttpEntity<>(headers);
 		
-		ResponseEntity<Bike3API> s2= restTemplate.exchange(url, HttpMethod.GET, entity, Bike3API.class);
+		ResponseEntity<Bike3API[]> s2= restTemplate.exchange(url, HttpMethod.GET, entity, Bike3API[].class);
 		
+		//return s2.getBody();
 		return Arrays.asList(s2.getBody());
 		
 	}
@@ -72,9 +73,10 @@ public class ExternalBikeServiceImpl implements ExternalBikeService {
 		headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 		headers.add("x-api-key", apikey);  
 		
-		HttpEntity<AirAPI> entity = new HttpEntity<>(headers);
+		HttpEntity<String> entity = new HttpEntity<>(headers);
 		ResponseEntity<AirAPI[]> s1 = restTemplate.exchange(url, HttpMethod.GET, entity, AirAPI[].class);
 		return Arrays.asList(s1.getBody());
+		//return s1.getBody();
 	}
 
 }

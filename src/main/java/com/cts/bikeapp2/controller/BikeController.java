@@ -2,6 +2,8 @@ package com.cts.bikeapp2.controller;
 
 import java.util.List;
 
+//import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cts.bikeapp2.entity.AirAPI;
 import com.cts.bikeapp2.entity.Bike;
-import com.cts.bikeapp2.entity.Bike3API;
 import com.cts.bikeapp2.service.BikeService;
+import com.cts.bikeapp2.entity.Bike3API;
+import com.cts.bikeapp2.entity.AirAPI;
 import com.cts.bikeapp2.service.ExternalBikeServiceImpl;
 
 
@@ -34,7 +36,7 @@ public class BikeController {
 		bikeService.createBike(b);
 	}
 	
-	@GetMapping
+	@GetMapping("/")
 	public Iterable<Bike>getAllBikes(){
 		return bikeService.getAllBikes();
 	}
@@ -63,7 +65,7 @@ public class BikeController {
 //	https://api.api-ninjas.com/v1/motorcycles?make=Kawasaki&model=Ninja
 
 	
-	@GetMapping("/motorcycles/make/{make}/model/{model}") //
+	@GetMapping("/motorcycles/make/{make}/model/{model}") 
 	public List<Bike3API> getBikeDetails(@PathVariable String make, @PathVariable String model) {
 		System.out.println("Requesting Bike brand and details for {}/{}"+ make + model);
 		//String s=externalBikeServiceImpl.getBikeDetails(model);
@@ -78,6 +80,8 @@ public class BikeController {
 		List<AirAPI> s1=externalBikeServiceImpl.getAirlines(name);
 		return s1;
 	}
+	
+	
 }
 
 
